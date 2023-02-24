@@ -110,7 +110,7 @@ html {
 	font-size: var(--FONT-SIZE-STD);
 	font-family: var(--FONT-DEFAULT);
 	height: 100%;
-	min-width: 455px;
+	min-width: 350px;
 	/* ^ Hand picked to not wrap header contacts */
 	scroll-padding-top: var(--HEADER-HEIGHT-PADDING);
 }
@@ -504,11 +504,6 @@ address {
 		border-radius: var(--BORDER-RADIUS-STD);
 		max-height: calc(150px + (var(--MARGIN-STD) + var(--BORDER-THICK)) * 2 + 10em);
 	}
-
-	.list-card p:before {
-		background: linear-gradient(to bottom, transparent 3em, var(--PALETTE-GREY) 8em);
-	}
-
 
 	/* SU DI ME */
 	.su-di-me {
