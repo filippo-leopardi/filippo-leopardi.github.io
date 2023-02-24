@@ -97,6 +97,10 @@ input, textarea, button {
 	content: '@';
 }
 
+#insert-82::before {
+	content: '82';
+}
+
 
 
 /* GENERAL */
@@ -161,7 +165,7 @@ header {
 	color: var(--PALETTE-WHITE);
 	background-color: var(--PALETTE-BLUE);
 	text-align: right;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	padding: var(--BUTTON-PADDING-STD);
 }
 
@@ -500,9 +504,10 @@ address {
 	}
 
 	/* SU DI ME */
-	.su-di-me .floating-left {
+	.su-di-me {
 		float: none;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 	}
 
