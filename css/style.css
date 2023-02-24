@@ -21,8 +21,8 @@ input, textarea, button {
 :root {
 	/* FONTS */
 	--FONT-DEFAULT: 'Nunito Sans', sans-serif;
-	--FONT-SIZE-STD: clamp(1rem, 3vw, 1.1rem);
-	--FONT-SIZE-SMALL: clamp(0.5rem, 3vw, 0.8rem);
+	--FONT-SIZE-STD: clamp(1.1rem, 3vw, 1.2rem);
+	--FONT-SIZE-SMALL: clamp(0.8rem, 3vw, 0.8rem);
 	--FONT-SIZE-SMALLEST: clamp(0.4rem, 3vw, 0.6rem);
 
 	/* COLORS */
@@ -167,7 +167,7 @@ header {
 	color: var(--PALETTE-WHITE);
 	background-color: var(--PALETTE-BLUE);
 	text-align: right;
-	font-size: 0.9rem;
+	font-size: var(--FONT-SIZE-SMALL);
 	padding: var(--BUTTON-PADDING-STD);
 }
 
@@ -363,6 +363,7 @@ footer .torna-su:first-child {
 	position: relative;
 }
 
+/* Paragraph fade effect */
 .list-card p:before {
 	content: '';
 	position: absolute;
@@ -370,7 +371,7 @@ footer .torna-su:first-child {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(transparent 50%, var(--PALETTE-GREY) 90%);
+	background: linear-gradient(to bottom, transparent 2em, var(--PALETTE-GREY) 8em);
 }
 
 
@@ -501,8 +502,13 @@ address {
 		justify-content: center;
 		text-align: center;
 		border-radius: var(--BORDER-RADIUS-STD);
-		max-height: 350px;
+		max-height: calc(150px + (var(--MARGIN-STD) + var(--BORDER-THICK)) * 2 + 10em);
 	}
+
+	.list-card p:before {
+		background: linear-gradient(to bottom, transparent 3em, var(--PALETTE-GREY) 8em);
+	}
+
 
 	/* SU DI ME */
 	.su-di-me {
