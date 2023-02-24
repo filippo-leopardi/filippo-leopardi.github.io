@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 
 /* RESET */
 
@@ -20,7 +20,7 @@ input, textarea, button {
 
 :root {
 	/* FONTS */
-	--FONT-DEFAULT: 'Raleway', sans-serif;
+	--FONT-DEFAULT: 'Nunito Sans', sans-serif;
 	--FONT-SIZE-STD: clamp(0.8rem, 3vw, 1.1rem);
 	--FONT-SIZE-SMALL: clamp(0.5rem, 3vw, 0.8rem);
 	--FONT-SIZE-SMALLEST: clamp(0.4rem, 3vw, 0.6rem);
