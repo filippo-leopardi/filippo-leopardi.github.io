@@ -21,8 +21,9 @@ input, textarea, button {
 :root {
 	/* FONTS */
 	--FONT-DEFAULT: 'Nunito Sans', sans-serif;
-	--FONT-SIZE-STD: clamp(1.1rem, 3vw, 1.2rem);
-	--FONT-SIZE-SMALL: clamp(0.8rem, 3vw, 0.8rem);
+	--FONT-SIZE-STD: clamp(0.8rem, 3vw, 1.2rem);
+	--FONT-SIZE-BIG: clamp(2rem, 3vw, 2.5rem);
+	--FONT-SIZE-SMALL: clamp(0.4rem, 3vw, 0.8rem);
 	--FONT-SIZE-SMALLEST: clamp(0.4rem, 3vw, 0.6rem);
 
 	/* COLORS */
@@ -110,7 +111,7 @@ html {
 	font-size: var(--FONT-SIZE-STD);
 	font-family: var(--FONT-DEFAULT);
 	height: 100%;
-	min-width: 350px;
+	min-width: 250px;
 	/* ^ Hand picked to not wrap header contacts */
 	scroll-padding-top: var(--HEADER-HEIGHT-PADDING);
 }
@@ -120,7 +121,7 @@ body {
 	flex-direction: column;
 	justify-content: stretch;
 	margin: 0 auto;
-	min-width: 300px;
+	min-width: 200px;
 	width: 90%;
 	min-height: 100%;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.6)), url(../img/TEMP-rock-texture-1920x1440.jpg);
@@ -174,7 +175,7 @@ header {
 header h1 {
 	padding: var(--PADDING-STD);
 	color: var(--PALETTE-BLUE);
-	font-size: clamp(1.4rem, 5vw, 2.5rem);
+	font-size: clamp(1.1rem, 5vw, 2.5rem);
 }
 
 header nav ul {
@@ -193,7 +194,7 @@ header nav ul {
 .nav-element a:any-link {
 	display: block;
 	padding: var(--BUTTON-PADDING-STD);
-	font-size: clamp(0.7rem, 3vw, 1rem);
+	font-size: clamp(0.4rem, 3vw, 1rem);
 	background-color: var(--PALETTE-RED);
 	color: var(--PALETTE-WHITE);
 	transition: var(--TRANSITION-COLORS-STD);
@@ -237,7 +238,7 @@ header nav ul {
 }
 
 .banner h1 {
-	font-size: 2.5rem;
+	font-size: var(--FONT-SIZE-BIG);
 }
 
 .banner :is(h1, h2, h3, h4) {
