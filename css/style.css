@@ -21,7 +21,7 @@ input, textarea, button {
 :root {
 	/* FONTS */
 	--FONT-DEFAULT: 'Nunito Sans', sans-serif;
-	--FONT-SIZE-STD: clamp(0.8rem, 3vw, 1.1rem);
+	--FONT-SIZE-STD: clamp(1rem, 3vw, 1.1rem);
 	--FONT-SIZE-SMALL: clamp(0.5rem, 3vw, 0.8rem);
 	--FONT-SIZE-SMALLEST: clamp(0.4rem, 3vw, 0.6rem);
 
@@ -35,8 +35,8 @@ input, textarea, button {
 	--FONT-COLOR-DEFAULT: var(--PALETTE-BLACK);
 
 	/* MARGIN */
-	--HEADER-HEIGHT-MARGIN: 0px;
-	/* TODO: set height */
+	--HEADER-HEIGHT-PADDING: 160px;
+	/* ^ Hand picked */
 	--MARGIN-STD: 10px;
 	--IMAGE-MARGIN-STD: 30px;
 
@@ -110,7 +110,9 @@ html {
 	font-size: var(--FONT-SIZE-STD);
 	font-family: var(--FONT-DEFAULT);
 	height: 100%;
-	min-width: 320px;
+	min-width: 455px;
+	/* ^ Hand picked to not wrap header contacts */
+	scroll-padding-top: var(--HEADER-HEIGHT-PADDING);
 }
 
 body {
@@ -252,7 +254,6 @@ main {
 }
 
 main article {
-	scroll-margin-top: var(--HEADER-HEIGHT-MARGIN);
 	clear: both;
 	border-radius: var(--BORDER-RADIUS-STD);
 	background-color: var(--PALETTE-WHITE);
