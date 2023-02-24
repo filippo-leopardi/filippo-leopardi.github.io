@@ -21,10 +21,10 @@ input, textarea, button {
 :root {
 	/* FONTS */
 	--FONT-DEFAULT: 'Nunito Sans', sans-serif;
-	--FONT-SIZE-STD: clamp(0.8rem, 3vw, 1.2rem);
+	--FONT-SIZE-STD: clamp(0.6rem, 3vw, 1.2rem);
 	--FONT-SIZE-BIG: clamp(2rem, 3vw, 2.5rem);
 	--FONT-SIZE-SMALL: clamp(0.4rem, 3vw, 0.8rem);
-	--FONT-SIZE-SMALLEST: clamp(0.4rem, 3vw, 0.6rem);
+	--FONT-SIZE-SMALLEST: clamp(0.3rem, 3vw, 0.6rem);
 
 	/* COLORS */
 	--PALETTE-BLACK: #272727;
@@ -175,7 +175,7 @@ header {
 header h1 {
 	padding: var(--PADDING-STD);
 	color: var(--PALETTE-BLUE);
-	font-size: clamp(1.1rem, 5vw, 2.5rem);
+	font-size: clamp(1rem, 5vw, 2.5rem);
 }
 
 header nav ul {
