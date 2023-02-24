@@ -1,0 +1,521 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+/* RESET */
+
+*, *::after, *::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* FORCE INHERIT (for elements that don't) */
+
+input, textarea, button {
+	font: inherit;
+}
+
+
+
+/* VARIABLES */
+
+:root {
+	/* FONTS */
+	--FONT-DEFAULT: 'Raleway', sans-serif;
+	--FONT-SIZE-STD: clamp(0.8rem, 3vw, 1.1rem);
+	--FONT-SIZE-SMALL: clamp(0.5rem, 3vw, 0.8rem);
+	--FONT-SIZE-SMALLEST: clamp(0.4rem, 3vw, 0.6rem);
+
+	/* COLORS */
+	--PALETTE-BLACK: #272727;
+	--PALETTE-GREEN: #A7CAB1;
+	--PALETTE-WHITE: #F7F9F9;
+	--PALETTE-BLUE: #3E6F8E;
+	--PALETTE-RED: #AD343E;
+	--PALETTE-GREY: #E8E8E8;
+	--FONT-COLOR-DEFAULT: var(--PALETTE-BLACK);
+
+	/* MARGIN */
+	--HEADER-HEIGHT-MARGIN: 0px;
+	/* TODO: set height */
+	--MARGIN-STD: 10px;
+	--IMAGE-MARGIN-STD: 30px;
+
+	/* PADDING */
+	--PADDING-STD: 0.8rem;
+	--PARAGRAPH-PADDING-STD: 1rem;
+	--BUTTON-PADDING-STD: 0.35em;
+
+	/* BORDERS */
+	--BORDER-STD: 2px solid;
+	--BORDER-THICK: 4px solid;
+	--BORDER-RADIUS-STD: 4px;
+
+	/* SHADOWS */
+	--BOX-SHADOW-STD: 0px 5px 10px -2px var(--PALETTE-BLACK);
+	--TEXT-SHADOW-STD: var(--PALETTE-BLACK) 4px 4px 6px;
+
+	/* TRANSITIONS */
+	--TRANSITION-COLORS-STD: color, background-color 0.2s;
+}
+
+
+
+/* UTILITY CLASSES */
+
+.offscreen {
+	position: absolute;
+	left: -10000px;
+}
+
+.centered {
+	text-align: center;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.floating-left {
+	float: left;
+	max-width: 100%;
+	height: auto;
+	margin: var(--IMAGE-MARGIN-STD);
+}
+
+.floating-right {
+	float: right;
+	max-width: 100%;
+	height: auto;
+	margin: var(--IMAGE-MARGIN-STD);
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+#at-position::before {
+	content: '@';
+}
+
+
+
+/* GENERAL */
+
+html {
+	scroll-behavior: smooth;
+	font-size: var(--FONT-SIZE-STD);
+	font-family: var(--FONT-DEFAULT);
+	height: 100%;
+	min-width: 320px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	margin: 0 auto;
+	min-width: 300px;
+	width: 90%;
+	min-height: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.6)), url(../img/TEMP-rock-texture-1920x1440.jpg);
+	background-attachment: fixed, scroll;
+	color: var(--FONT-COLOR-DEFAULT);
+}
+
+p {
+	line-height: 1.5;
+	/* REFACTOR: make img + p a flexbox? */
+}
+
+a:any-link {
+	text-decoration: none;
+	color: var(--PALETTE-BLUE);
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--BORDER-RADIUS-STD);
+	box-shadow: var(--BOX-SHADOW-STD);
+}
+
+ul {
+	list-style-position: inside;
+}
+
+
+
+/* HEADER */
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: var(--PALETTE-WHITE);
+	border-radius: var(--BORDER-RADIUS-STD);
+	box-shadow: var(--BOX-SHADOW-STD);
+}
+
+.top-contacts, .top-contacts a:any-link {
+	color: var(--PALETTE-WHITE);
+	background-color: var(--PALETTE-BLUE);
+	text-align: right;
+	font-size: 0.8rem;
+	padding: var(--BUTTON-PADDING-STD);
+}
+
+header h1 {
+	padding: var(--PADDING-STD);
+	color: var(--PALETTE-BLUE);
+	font-size: clamp(1.4rem, 5vw, 2.5rem);
+}
+
+header nav ul {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+}
+
+.nav-element {
+	width: 25%;
+	text-align: center;
+	text-transform: uppercase;
+	border-left: var(--BORDER-STD) var(--PALETTE-WHITE);
+}
+
+.nav-element a:any-link {
+	display: block;
+	padding: var(--BUTTON-PADDING-STD);
+	font-size: clamp(0.7rem, 3vw, 1rem);
+	background-color: var(--PALETTE-RED);
+	color: var(--PALETTE-WHITE);
+	transition: var(--TRANSITION-COLORS-STD);
+}
+
+.nav-element:first-child {
+	border-left: none;
+}
+
+.nav-element:first-child a {
+	border-radius: 0 0 0 var(--BORDER-RADIUS-STD);
+}
+
+.nav-element:last-child a {
+	border-radius: 0 0 var(--BORDER-RADIUS-STD) 0;
+}
+
+.nav-element a:hover {
+	background-color: var(--PALETTE-WHITE);
+	color: var(--PALETTE-RED);
+	font-weight: bold;
+}
+
+/* FIX? It only overrides because of order - increase specificity? */
+/* 
+.nav-element__current a:any-link {
+	background-color: var(--PALETTE-WHITE);
+	color: var(--PALETTE-RED);
+	font-weight: bold;
+}
+ */
+
+
+
+/* BANNER */
+
+.banner {
+	color: var(--PALETTE-WHITE);
+	text-shadow: var(--TEXT-SHADOW-STD);
+	padding: 40px 0 10px 0;
+}
+
+.banner h1 {
+	font-size: 2.5rem;
+}
+
+.banner :is(h1, h2, h3, h4) {
+	margin: var(--MARGIN-STD) 0;
+}
+
+
+
+/* MAIN */
+
+main {
+	flex-grow: 1;
+	margin: 20px 0;
+}
+
+main article {
+	scroll-margin-top: var(--HEADER-HEIGHT-MARGIN);
+	clear: both;
+	border-radius: var(--BORDER-RADIUS-STD);
+	background-color: var(--PALETTE-WHITE);
+	box-shadow: var(--BOX-SHADOW-STD);
+}
+
+main p {
+	padding: var(--PARAGRAPH-PADDING-STD);
+	text-align: justify;
+}
+
+
+
+/* FOOTER */
+/* 
+footer {
+	position: sticky;
+	bottom: 0;
+}
+ */
+
+footer .footer-contatti:first-child,
+footer .torna-su:first-child {
+	border-radius: var(--BORDER-RADIUS-STD) var(--BORDER-RADIUS-STD) 0 0;
+}
+
+.torna-su:any-link {
+	display: block;
+	text-align: center;
+	padding: var(--BUTTON-PADDING-STD);
+	background-color: var(--PALETTE-GREEN);
+	color: var(--FONT-COLOR-DEFAULT);
+	text-transform: uppercase;
+	font-size: var(--FONT-SIZE-SMALL);
+	transition: var(--TRANSITION-COLORS-STD);
+	font-weight: bold;
+}
+
+/* FIX: tapping leaves "hover" colors */
+/* 
+.torna-su:hover {
+	font-weight: bold;
+}
+ */
+
+.footer-contatti {
+	padding: var(--PADDING-STD);
+	background-color: var(--PALETTE-WHITE);
+	font-size: calc(var(--FONT-SIZE-SMALL) + 0.1rem);
+}
+
+.copyright {
+	background-color: var(--PALETTE-BLACK);
+	color: var(--PALETTE-WHITE);
+	padding: var(--BUTTON-PADDING-STD);
+	font-size: var(--FONT-SIZE-SMALLEST);
+}
+
+.copyright a:any-link {
+	color: var(--PALETTE-WHITE);
+	font-weight: bold;
+}
+
+
+
+/* HOME */
+
+/* TODO: home banner formatting */
+
+
+
+.home__lavori {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.home__lavori a:any-link {
+	display: contents;
+	color: var(--FONT-COLOR-DEFAULT);
+}
+
+.list-card {
+	display: flex;
+	justify-content: left;
+	width: 70%;
+	background-color: var(--PALETTE-GREY);
+	margin-bottom: var(--PARAGRAPH-PADDING-STD);
+	border-radius: 100px var(--BORDER-RADIUS-STD) var(--BORDER-RADIUS-STD) 100px / 50% var(--BORDER-RADIUS-STD) var(--BORDER-RADIUS-STD) 50%;
+	max-height: calc(150px + (var(--MARGIN-STD) + var(--BORDER-THICK)) * 2);
+	overflow: hidden;
+}
+
+.list-card img {
+	border: var(--BORDER-THICK) var(--PALETTE-RED);
+	margin: var(--MARGIN-STD);
+}
+
+.list-card h3 {
+	color: var(--PALETTE-RED);
+	text-transform: uppercase;
+	font-size: 1rem;
+	margin: var(--PARAGRAPH-PADDING-STD) var(--PARAGRAPH-PADDING-STD) 0 var(--PARAGRAPH-PADDING-STD);
+}
+
+.list-card__text {
+	position: relative;
+}
+
+.list-card p:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(transparent 50%, var(--PALETTE-GREY) 90%);
+}
+
+
+
+/* SU DI ME */
+
+.su-di-me {
+	/* Temporary solution to img overflowing */
+	min-height: calc(510px + var(--IMAGE-MARGIN-STD) * 2);
+}
+
+/* TODO: responsive layout */
+
+
+
+/* LAVORI */
+
+.flex-card__container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 6%;
+	row-gap: 60px;
+}
+
+.flex-card {
+	width: 41%;
+	border-top: 6px solid var(--PALETTE-RED);
+}
+
+.flex-card h2 {
+	margin: var(--IMAGE-MARGIN-STD) var(--IMAGE-MARGIN-STD) 0 var(--PARAGRAPH-PADDING-STD);
+	font-size: clamp(1.2rem, 2vw, 1.4rem);
+}
+
+.flex-card summary {
+	cursor: pointer;
+	list-style: none;
+	padding: var(--BUTTON-PADDING-STD);
+	border-radius: 0 0 var(--BORDER-RADIUS-STD) var(--BORDER-RADIUS-STD);
+	background-color: var(--PALETTE-GREEN);
+	font-weight: bold;
+}
+
+.flex-card details {
+	border-radius: 0 0 var(--BORDER-RADIUS-STD) var(--BORDER-RADIUS-STD);
+	background-color: var(--PALETTE-GREY);
+	clear: both;
+}
+
+.flex-card ul {
+	padding: var(--PARAGRAPH-PADDING-STD);
+	padding-bottom: 0;
+}
+
+.flex-card ul li {
+	padding-bottom: var(--PARAGRAPH-PADDING-STD);
+	text-align: justify;
+}
+
+.flex-card details[open] ul {
+	animation-name: growFontSize, fadeIn;
+	animation-duration: 100ms, 500ms;
+}
+
+@keyframes growFontSize {
+	0% {
+		font-size: 0;
+	}
+
+	40% {
+		font-size: 0.9em;
+	}
+
+	100% {
+		font-size: 1em;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+
+
+/* CONTATTI */
+
+address {
+	padding: var(--PARAGRAPH-PADDING-STD);
+}
+
+
+
+/* RESPONSIVENESS */
+
+/* Medium width */
+@media screen and (max-width: 1200px) {
+
+	/* One-per-row view */
+	.flex-card {
+		width: 82%;
+	}
+
+	.list-card {
+		width: 90%;
+	}
+}
+
+/* Mobile width */
+@media screen and (max-width: 560px) {
+
+	/* HEADER */
+	header h1 {
+		text-align: center;
+	}
+
+	/* HOME */
+	.list-card {
+		flex-wrap: wrap;
+		justify-content: center;
+		text-align: center;
+		border-radius: var(--BORDER-RADIUS-STD);
+		max-height: 350px;
+	}
+
+	/* SU DI ME */
+	.su-di-me .floating-left {
+		float: none;
+		display: flex;
+		justify-content: center;
+	}
+
+	/* SERVIZI */
+	.flex-card .floating-left,
+	.flex-card .floating-right {
+		float: none;
+		display: flex;
+		justify-content: center;
+	}
+
+	.flex-card :is(h1, h2, h3, h4) {
+		text-align: center;
+		/* FIX? apparently h2 margin doesn't matter since img has one */
+	}
+}
